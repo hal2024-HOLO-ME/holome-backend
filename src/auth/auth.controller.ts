@@ -9,6 +9,7 @@ import {
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { SignInInput } from './dto/signin.input';
+import { SignUpInput } from './dto/signup.input';
 
 @Controller('auth')
 export class AuthController {
@@ -29,9 +30,6 @@ export class AuthController {
 		@Body() signInInput: SignInInput,
 	): Promise<{ access_token: string }> {
 		const { email, password } = signInInput;
-
-		// TODO: デバッグ用なので後で消す
-		console.log(email, password);
 
 		const user = await this.authService.validateUser(email, password);
 
@@ -54,5 +52,48 @@ export class AuthController {
 		return {
 			access_token: accessToken,
 		};
+	}
+
+	/**
+	 * サインアップ
+	 * @param signUpInput メールアドレス、パスワード
+	 * @returns LoginSceneに移動
+	 */
+	@HttpCode(200)
+	@Post('signup')
+	async signUp(@Body() signUpInput: SignUpInput): Promise<void> {
+		const user = await this.authService.getUser(signUpInput.email);
+		/**
+		 * emailがすでに登録されている場合の処理
+		 * @throws {paths["/api/v1/auth/signup"]["post"]["responses"]["400"]}
+		 */
+		if (user)
+			throw new HttpException(
+				{
+					type: 'validation',
+					message: [
+						{
+							property: 'email',
+							message: 'このメールアドレスはすでに登録されています',
+						},
+					],
+				},
+				HttpStatus.BAD_REQUEST,
+			);
+
+		const newUser = await this.authService.signUp(signUpInput);
+
+		/**
+		 * ユーザー登録に失敗した場合の処理
+		 * @throws {paths["/api/v1/auth/signup"]["post"]["responses"]["500"]}
+		 */
+		if (!newUser)
+			throw new HttpException(
+				{
+					message: '会員登録に失敗しました',
+				},
+				HttpStatus.INTERNAL_SERVER_ERROR,
+			);
+		return;
 	}
 }

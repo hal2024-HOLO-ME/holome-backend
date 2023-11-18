@@ -3,6 +3,8 @@ import { Users } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { PasswordOmitUsers } from './types/passwordOmitUsers';
 import * as bcrypt from 'bcrypt';
+import { SignUpInput } from './dto/signup.input';
+import { uuidv7 } from '@kripod/uuidv7';
 
 @Injectable()
 export class AuthService {
@@ -44,9 +46,23 @@ export class AuthService {
 		return null;
 	}
 
-	async signIn(user: PasswordOmitUsers): Promise<string> {
-		//
+	async signUp(signUpInput: SignUpInput): Promise<Users> {
+		const { email, password } = signUpInput;
 
+		const salt = await bcrypt.genSalt();
+		const hashPassword = await bcrypt.hash(password, salt);
+
+		return await this.prismaService.users.create({
+			data: {
+				id: uuidv7(),
+				email,
+				password: hashPassword,
+			},
+		});
+	}
+
+	// TODO: サインインの処理で何を返すか検討
+	async signIn(user: PasswordOmitUsers): Promise<string> {
 		return 'access_token';
 	}
 }
