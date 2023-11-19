@@ -13,14 +13,16 @@ erDiagram
   "Characters" {
     Int id "🗝️"
     String name 
-    String model_path 
+    String image_path 
+    String image_description 
+    Int type 
     DateTime created_at 
     DateTime updated_at 
     }
   
 
   "CharactersUsers" {
-    Int familiarity 
+    Int nostalgicLevel 
     }
   
     "Users" o{--}o "CharactersUsers" : "characters_users"

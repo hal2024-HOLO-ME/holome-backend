@@ -13,7 +13,9 @@ CREATE TABLE "Users" (
 CREATE TABLE "Characters" (
     "id" SERIAL NOT NULL,
     "name" CHAR(10) NOT NULL,
-    "model_path" TEXT NOT NULL,
+    "image_path" TEXT NOT NULL,
+    "image_description" TEXT NOT NULL,
+    "type" INTEGER NOT NULL DEFAULT 0,
     "created_at" TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(6) NOT NULL,
 
@@ -24,7 +26,7 @@ CREATE TABLE "Characters" (
 CREATE TABLE "CharactersUsers" (
     "user_id" CHAR(36) NOT NULL,
     "character_id" SMALLINT NOT NULL,
-    "familiarity" INTEGER NOT NULL DEFAULT 0,
+    "nostalgicLevel" INTEGER NOT NULL DEFAULT 0,
 
     CONSTRAINT "CharactersUsers_pkey" PRIMARY KEY ("user_id","character_id")
 );
