@@ -12,3 +12,8 @@
 
 メールアドレス：a@a.com
 パスワード：password123
+
+## スキーマいじったら
+
+- フォーマット: `yarn prisma format`
+- erdに反映: `yarn prisma generate`
