@@ -14,7 +14,7 @@ CREATE TABLE "Characters" (
     "id" SERIAL NOT NULL,
     "name" CHAR(10) NOT NULL,
     "image_path" TEXT NOT NULL,
-    "image_description" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
     "type" INTEGER NOT NULL DEFAULT 0,
     "created_at" TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(6) NOT NULL,

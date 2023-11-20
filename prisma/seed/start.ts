@@ -6,9 +6,9 @@ import { insertCharactersUsers } from './data/characters_users';
 const prisma = new PrismaClient();
 
 async function main() {
+	await prisma.charactersUsers.deleteMany();
 	await prisma.users.deleteMany();
 	await prisma.characters.deleteMany();
-	await prisma.charactersUsers.deleteMany();
 
 	await insertUsers();
 	await insertCharacters();

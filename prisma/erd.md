@@ -14,7 +14,7 @@ erDiagram
     Int id "🗝️"
     String name 
     String image_path 
-    String image_description 
+    String description 
     Int type 
     DateTime created_at 
     DateTime updated_at 
