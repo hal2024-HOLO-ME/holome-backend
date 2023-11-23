@@ -89,7 +89,8 @@ export const insertCharacters = async () => {
 				id: 9,
 				name: 'ミィ',
 				model_name: 'MiiVerNormal',
-				description: 'test',
+				description:
+					'「独創的知識探求タイプ」に該当。あなたは持ち前の“ユニークな視野”と“活発な知力”に誇りを持っていて、宇宙のあらゆる謎について色々と考えざるにはいられない人たちです。この性格タイプの人たちはかなりまれで、独創性と創作力を備えているため、周りから注目を浴びるのも恐れません。',
 				type: 0,
 				created_at: date,
 				updated_at: date,
@@ -98,7 +99,8 @@ export const insertCharacters = async () => {
 				id: 10,
 				name: 'ミィ',
 				model_name: 'MiiVerGhost',
-				description: 'test',
+				description:
+					'「独創的知識探求タイプ」に該当。あなたは持ち前の“ユニークな視野”と“活発な知力”に誇りを持っていて、宇宙のあらゆる謎について色々と考えざるにはいられない人たちです。この性格タイプの人たちはかなりまれで、独創性と創作力を備えているため、周りから注目を浴びるのも恐れません。',
 				type: 1,
 				created_at: date,
 				updated_at: date,
