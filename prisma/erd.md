@@ -13,7 +13,7 @@ erDiagram
   "Characters" {
     Int id "🗝️"
     String name 
-    String image_path 
+    String model_name 
     String description 
     Int type 
     DateTime created_at 
