@@ -1,4 +1,4 @@
 export type DiagnosisResponse = {
-	name: String;
-	character_description: String;
+	name: string;
+	character_description: string;
 };

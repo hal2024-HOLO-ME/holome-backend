@@ -62,7 +62,7 @@ export class AuthService {
 	}
 
 	// TODO: サインインの処理で何を返すか検討
-	async signIn(user: PasswordOmitUsers): Promise<string> {
+	async signIn(_user: PasswordOmitUsers): Promise<string> {
 		return 'access_token';
 	}
 }

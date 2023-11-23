@@ -1,7 +1,6 @@
 import { Body, Controller, HttpCode, Post } from '@nestjs/common';
 import { DiagnosisService } from './diagnosis.service';
 import { DiagnosisInput } from './dto/diagnosisInput';
-import { DiagnosisResponse } from './dto/diagnosisResponse';
 
 /**
  * DiagnosisControllerクラス：診断結果を取得するためのエンドポイントを提供する
