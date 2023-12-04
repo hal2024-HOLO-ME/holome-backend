@@ -14,10 +14,10 @@ export class AuthService {
 		return 'Hello World!';
 	}
 
-	async getUser(email: string): Promise<Users> {
+	async getUser(login_id: string): Promise<Users> {
 		return await this.prismaService.users.findUnique({
 			where: {
-				email,
+				login_id,
 			},
 		});
 	}
@@ -34,10 +34,10 @@ export class AuthService {
 	}
 
 	async validateUser(
-		email: string,
+		login_id: string,
 		password: string,
 	): Promise<PasswordOmitUsers | null> {
-		const user = await this.getUser(email);
+		const user = await this.getUser(login_id);
 
 		if (user && (await this.verifyPassword(password, user.password))) {
 			const { password: _password, ...result } = user;
@@ -47,7 +47,7 @@ export class AuthService {
 	}
 
 	async signUp(signUpInput: SignUpInput): Promise<Users> {
-		const { email, password } = signUpInput;
+		const { login_id, password } = signUpInput;
 
 		const salt = await bcrypt.genSalt();
 		const hashPassword = await bcrypt.hash(password, salt);
@@ -55,7 +55,7 @@ export class AuthService {
 		return await this.prismaService.users.create({
 			data: {
 				id: uuidv7(),
-				email,
+				login_id,
 				password: hashPassword,
 			},
 		});

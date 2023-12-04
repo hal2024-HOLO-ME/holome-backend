@@ -7,10 +7,14 @@
 - `yarn install`
 - `docker compose up`
 - .envを作成して.env.exampleを貼り付け
+- `yarn prisma generate`
+- `yarn prisma deploy`
+- `yarn prisma db push`
+- `yarn prisma db seed`
 
 ## ダミーデータ
 
-メールアドレス：a@a.com
+ユーザーID：abcdefg
 パスワード：password123
 
 ## スキーマいじったら

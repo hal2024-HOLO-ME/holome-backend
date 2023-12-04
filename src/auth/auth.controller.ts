@@ -29,12 +29,12 @@ export class AuthController {
 	async signIn(
 		@Body() signInInput: SignInInput,
 	): Promise<{ access_token: string }> {
-		const { email, password } = signInInput;
+		const { login_id, password } = signInInput;
 
-		const user = await this.authService.validateUser(email, password);
+		const user = await this.authService.validateUser(login_id, password);
 
 		/**
-		 * emailまたはpasswordが間違っている場合の処理
+		 * login_idまたはpasswordが間違っている場合の処理
 		 * @throws {paths["/api/v1/auth/signin"]["post"]["responses"]["401"]}
 		 */
 		if (!user) {
@@ -56,15 +56,15 @@ export class AuthController {
 
 	/**
 	 * サインアップ
-	 * @param signUpInput メールアドレス、パスワード
+	 * @param signUpInput ユーザーID、パスワード
 	 * @returns LoginSceneに移動
 	 */
 	@HttpCode(200)
 	@Post('signup')
 	async signUp(@Body() signUpInput: SignUpInput): Promise<void> {
-		const user = await this.authService.getUser(signUpInput.email);
+		const user = await this.authService.getUser(signUpInput.login_id);
 		/**
-		 * emailがすでに登録されている場合の処理
+		 * login_idがすでに登録されている場合の処理
 		 * @throws {paths["/api/v1/auth/signup"]["post"]["responses"]["400"]}
 		 */
 		if (user)
@@ -73,8 +73,8 @@ export class AuthController {
 					type: 'validation',
 					message: [
 						{
-							property: 'email',
-							message: 'このメールアドレスはすでに登録されています',
+							property: 'login_id',
+							message: 'このユーザーIDはすでに登録されています',
 						},
 					],
 				},

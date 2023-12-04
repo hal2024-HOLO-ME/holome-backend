@@ -3,7 +3,7 @@ erDiagram
 
   "Users" {
     String id "🗝️"
-    String email 
+    String login_id 
     String password 
     DateTime created_at 
     DateTime updated_at 

@@ -1,22 +1,10 @@
-import {
-	IsEmail,
-	IsNotEmpty,
-	IsString,
-	MaxLength,
-	MinLength,
-} from 'class-validator';
+import { IsNotEmpty, IsString, MaxLength, MinLength } from 'class-validator';
 
 export class SignUpInput {
-	@IsEmail(
-		{},
-		{
-			message: 'メールアドレスの形式が正しくありません',
-		},
-	)
 	@IsNotEmpty({
-		message: 'メールアドレスを入力してください',
+		message: 'ユーザーIDを入力してください',
 	})
-	email: string;
+	login_id: string;
 
 	@IsString()
 	@MinLength(8, {
