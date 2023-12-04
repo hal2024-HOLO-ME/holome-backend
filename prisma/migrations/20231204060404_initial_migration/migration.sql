@@ -1,7 +1,7 @@
 -- CreateTable
 CREATE TABLE "Users" (
     "id" CHAR(36) NOT NULL,
-    "email" VARCHAR(255) NOT NULL,
+    "login_id" VARCHAR(255) NOT NULL,
     "password" CHAR(60) NOT NULL,
     "created_at" TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(6) NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE "CharactersUsers" (
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Users_email_key" ON "Users"("email");
+CREATE UNIQUE INDEX "Users_login_id_key" ON "Users"("login_id");
 
 -- AddForeignKey
 ALTER TABLE "CharactersUsers" ADD CONSTRAINT "CharactersUsers_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "Users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
