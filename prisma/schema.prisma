@@ -41,6 +41,7 @@ model CharactersUsers {
   character_id   Int        @db.SmallInt
   user           Users      @relation(fields: [user_id], references: [id])
   character      Characters @relation(fields: [character_id], references: [id])
+  character_name String     @db.Char(20)
   // TODO: デフォルトのふれあい度をいれる
   nostalgicLevel Int        @default(0)
 
