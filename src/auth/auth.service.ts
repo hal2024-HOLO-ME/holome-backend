@@ -15,7 +15,7 @@ export class AuthService {
 	}
 
 	async getUser(login_id: string): Promise<Users> {
-		return await this.prismaService.users.findUnique({
+		return await this.prismaService.users.findFirst({
 			where: {
 				login_id,
 			},
