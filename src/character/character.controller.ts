@@ -1,4 +1,4 @@
-import { Body, Controller, HttpCode, Post, Put } from '@nestjs/common';
+import { Body, Controller, HttpCode, Post } from '@nestjs/common';
 import { CharacterService } from './character.service';
 import { CharacterRegisterInput } from './dto/characterRegister.input';
 
