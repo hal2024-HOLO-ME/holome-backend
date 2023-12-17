@@ -22,13 +22,11 @@ export class AuthController {
 	/**
 	 * サインイン
 	 * @param {SignInInput} signInInput - ログイン情報
-	 * @returns {Promise<{ access_token: string }>} - JWTトークン
+	 * @returns {Promise<string>} アクセストークン
 	 */
 	@HttpCode(200)
 	@Post('signin')
-	async signIn(
-		@Body() signInInput: SignInInput,
-	): Promise<{ access_token: string }> {
+	async signIn(@Body() signInInput: SignInInput): Promise<string> {
 		const { login_id, password } = signInInput;
 
 		const user = await this.authService.validateUser(login_id, password);
@@ -47,11 +45,7 @@ export class AuthController {
 			);
 		}
 
-		const accessToken = await this.authService.signIn(user);
-
-		return {
-			access_token: accessToken,
-		};
+		return user.id;
 	}
 
 	/**

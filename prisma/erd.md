@@ -22,6 +22,7 @@ erDiagram
   
 
   "CharactersUsers" {
+    String character_name 
     Int nostalgicLevel 
     }
   
